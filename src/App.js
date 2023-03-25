@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Modal from './components/Modal/Modal';
 import Button from './components/Button/Button';
@@ -39,7 +39,7 @@ function App() {
   const handleAddTask = () => {
      setTasks((prevState) => [...prevState, 
       {
-      id: Math.floor((Math.random * 100)),
+      id: Math.floor(Math.random() * 1000),
       title: newTask,
       completed: false
      }]);
@@ -47,9 +47,37 @@ function App() {
   }
 
 const handleDelete = (id) => {
-  console.log(id, 'id');
+  const deleted = tasks.filter(el => el.id !== id);
+  setTasks([...deleted])
   /// filter
 }
+
+const handleDone = (id) => {
+  // const currentIndex = tasks.findIndex(task => task.id === id )
+  tasks.map(task => {
+    if(task.id === id) {
+      return task.completed = !task.completed
+    }
+    return task
+  })
+setTasks([...tasks])
+console.log(tasks, 'task');
+}
+const handleEdit = (editTodo) => {
+  console.log(editTodo, 'edit');
+ const editList = tasks.map(task => {
+    if(task.id === editTodo.id) {
+      return editTodo
+    }
+    return task
+  })
+  setTasks([...editList])
+} 
+console.log(tasks, 'tasks');
+// useEffect(() => {
+//   console.log('log useEffect');
+// }, [ tasks,show ])
+
   return (
     <div className="App">
       {show && <Modal 
@@ -65,6 +93,8 @@ const handleDelete = (id) => {
       {/* task list */}
   <TaskList 
   handleDelete={handleDelete}
+  handleDone={handleDone}
+  handleEdit={handleEdit}
   list={tasks} />
     </div>
   );

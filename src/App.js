@@ -34,7 +34,7 @@ function App() {
   
   const handleChangeCheck = (event) => {
     setNewTask(event.target.value);
-    console.log(newTask, 'new task');
+
   }
   const handleAddTask = () => {
      setTasks((prevState) => [...prevState, 
@@ -61,10 +61,9 @@ const handleDone = (id) => {
     return task
   })
 setTasks([...tasks])
-console.log(tasks, 'task');
 }
 const handleEdit = (editTodo) => {
-  console.log(editTodo, 'edit');
+
  const editList = tasks.map(task => {
     if(task.id === editTodo.id) {
       return editTodo
@@ -73,7 +72,7 @@ const handleEdit = (editTodo) => {
   })
   setTasks([...editList])
 } 
-console.log(tasks, 'tasks');
+
 // useEffect(() => {
 //   console.log('log useEffect');
 // }, [ tasks,show ])

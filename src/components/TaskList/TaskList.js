@@ -11,7 +11,7 @@ const TaskList = (
 
 
   const [currentEdit , setCurrentEdit] = useState();
-  console.log(currentEdit, 'eid');
+
   return (
     <div>
         {list.map(task => <TodoCard 

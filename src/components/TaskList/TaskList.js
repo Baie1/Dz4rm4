@@ -11,6 +11,7 @@ const TaskList = (
 
 
   const [currentEdit , setCurrentEdit] = useState();
+  console.log(currentEdit);
 
   return (
     <div>

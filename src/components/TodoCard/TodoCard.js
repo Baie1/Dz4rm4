@@ -15,9 +15,13 @@ const TodoCard = ({
        name='edit'
       value={newTitle}
       onChange={(event) => setNewTitle(event.target.value)}
+      
 />
-      <button onClick={() => handleEdit({...task, title: newTitle})} >Save</button>
-      <button >Cancel</button>
+      <button onClick={() => { handleEdit({...task, title: newTitle})
+      handleSelectCurrent(null)
+    }} >Save</button>
+
+      <button onClick = {() =>  handleSelectCurrent(null)} >Cancel</button>
       </div>
     }
   return (
